@@ -1,8 +1,0 @@
-select, option {
-    text-align-last: center;
-}
-
-#table-transaction-history {
-    background-color: white;
-    border-radius: 5px;
-}

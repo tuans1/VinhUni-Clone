@@ -6,4 +6,5 @@ import com.intern.student.entity.Course;
 
 public interface CourseRepository extends JpaRepository<Course, String>{
 
+	Course findByName(String name);
 }

@@ -7,5 +7,5 @@ import com.intern.student.entity.Student;
 
 @Repository
 public interface StudentRepository extends CrudRepository<Student, String>{
-
+	
 }

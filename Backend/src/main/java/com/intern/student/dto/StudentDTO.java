@@ -8,7 +8,7 @@ import com.intern.student.entity.Student;
 import lombok.Data;
 
 @Data
-public class EmployeeDTO {
+public class StudentDTO {
 	
 	private String id;
 

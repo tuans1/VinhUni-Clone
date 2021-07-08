@@ -6,4 +6,5 @@ import com.intern.student.entity.Lecturer;
 
 public interface LecturerRepository extends JpaRepository<Lecturer, String>{
 
+	
 }

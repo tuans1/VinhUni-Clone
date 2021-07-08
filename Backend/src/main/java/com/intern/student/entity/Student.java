@@ -27,7 +27,6 @@ public class Student {
 	@Column(name = "name")
 	private String name;
 	
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "student_course", 
 	joinColumns = @JoinColumn(name = "student_id"), 

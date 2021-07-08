@@ -23,6 +23,7 @@ public class Lecturer {
 	@Column(name="name")
 	private String name;
 	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "lecturer_course", 
 	joinColumns = @JoinColumn(name = "lecturer_id"), 
