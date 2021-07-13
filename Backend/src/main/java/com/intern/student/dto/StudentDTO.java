@@ -16,4 +16,6 @@ public class StudentDTO {
 
 	private Collection<CourseDTO> coursesDto;
 
+	private CourseDTO courseDto;
+
 }

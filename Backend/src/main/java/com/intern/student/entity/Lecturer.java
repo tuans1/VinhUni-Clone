@@ -2,6 +2,7 @@ package com.intern.student.entity;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,10 +25,11 @@ public class Lecturer {
 	@Column(name="name")
 	private String name;
 	
-
-	@ManyToMany(fetch = FetchType.LAZY)
+	
+	@ManyToMany
 	@JoinTable(name = "lecturer_course", 
 	joinColumns = @JoinColumn(name = "lecturer_id"), 
 	inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private Collection<Course> courses;	
+
 }

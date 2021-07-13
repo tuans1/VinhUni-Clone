@@ -43,3 +43,12 @@ body, .wrapper {
 .btn {
     color: white !important;
 }
+.container{
+    margin-right: auto !important; /* 1 */
+  margin-left:  auto !important; /* 1 */
+
+  max-width: 1200px !important; /* 2 */
+
+  padding-right: 10px !important; /* 3 */
+  padding-left:  10px !important; /* 3 */
+}

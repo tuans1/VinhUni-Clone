@@ -1,6 +1,7 @@
 package com.intern.student.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +26,48 @@ public class StudentController {
 	private StudentRepository studentRepo;
 
 	@GetMapping("")
-	public Student getStudentWithCourses() {
+	public StudentDTO getStudentCourse() {
 		Optional<Student> student = studentRepo.findById("231e");
-		Student std = student.get();
-		return student.get();
+		List<CourseDTO> courseDTOList = new ArrayList<>();
+		for (Course course : student.get().getCourses()) {
+			CourseDTO courseDTO = new CourseDTO();
+			courseDTO.setId(course.getId());
+			courseDTO.setName(course.getName());
+			List<LecturerDTO> lecturerList = new ArrayList<>();
+			for (Lecturer lecturer : course.getLecturer()) {
+				LecturerDTO lecturerDTO = new LecturerDTO();
+				lecturerDTO.setId(lecturer.getId());
+				lecturerDTO.setName(lecturer.getName());
+				lecturerList.add(lecturerDTO);
+			}
+			courseDTO.setLecturerDTO(lecturerList);
+			courseDTO.setFileDTO(course.getFiles());
+			courseDTOList.add(courseDTO);
+		}
+		StudentDTO studentDTO = new StudentDTO();
+		studentDTO.setCoursesDto(courseDTOList);
+		return studentDTO;
 	}
+	
+//	@GetMapping("/student-course-detail")
+//	public StudentDTO getStudentCourseDetail() {
+//		Optional<Student> student = studentRepo.findById("231e");
+//		List<CourseDTO> courseList = new ArrayList<>();
+//		for (Course course : student.get().getCourses()) {
+//			CourseDTO courseDTO = new CourseDTO();
+//			courseDTO.setName(course.getName());
+//			List<LecturerDTO> lecturerList = new ArrayList<>();
+//			for (Lecturer lecturer : course.getLecturer()) {
+//				LecturerDTO lecturerDTO = new LecturerDTO();
+//				lecturerDTO.setName(lecturer.getName());
+//				lecturerList.add(lecturerDTO);
+//			}
+//			courseDTO.setLecturerDTO(lecturerList);
+//			courseDTO.setFileDTO(course.getFiles());
+//			courseList.add(courseDTO);
+//		}
+//		StudentDTO studentDTO = new StudentDTO();
+//		studentDTO.setCoursesDto(courseList);
+//		return studentDTO;
+//	}
 }

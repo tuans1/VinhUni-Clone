@@ -28,14 +28,15 @@ public class Course {
 	private String id;
 	@Column(name = "name")
 	private String name;
-
+	
 	@ManyToMany(mappedBy = "courses")
 	private Collection<Student> students;
+	
 	@ManyToMany(mappedBy = "courses",fetch = FetchType.LAZY)
 	private Collection<Lecturer> lecturer;
 	
 	
-	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL) // Quan hệ 1-n với đối tượng ở dưới (file)
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL,fetch = FetchType.LAZY) // Quan hệ 1-n với đối tượng ở dưới (file)
     // MapopedBy trỏ tới tên biến Address ở trong Person.
     private Collection<File> files;
 	

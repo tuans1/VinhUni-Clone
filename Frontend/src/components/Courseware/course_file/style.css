@@ -1,0 +1,51 @@
+.course-file {
+    background-color: white;
+}
+
+/* HEAD */
+
+.file-heading {
+    border-bottom: 2px solid #3c6ac9;
+}
+
+.file-btn {
+    border: none;
+    padding: 8px 18px;
+    background-color: white;
+}
+
+/* BODY */
+.file-body{
+    padding: 15px;
+}
+.file-table {
+    font-size: 14px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.file-table td, .file-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.file-table tr:hover {
+    background-color: #ddd;
+}
+
+
+th {
+    text-align: center !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-weight: 600 ;
+    background-color: #e0e0e0;
+    color: #333;
+}
+tr > td{
+    padding:  8px !important;
+    margin: 0 !important;
+}
+

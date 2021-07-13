@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import Courseware from './components/Courseware';
 
 function App() {
   const { accountLoading } = useSelector(state => state.accountReducer)
@@ -22,9 +23,9 @@ function App() {
   return (
     <div>
       <ToastContainer />
-      <div className="wrap">
+      <div className="wrap" style={{backgroundColor:'#ecf0f1 '}}>
         <div className="container">
-          
+          <Courseware />
         </div>
       </div>
       {/* <MessengerCustomerChat

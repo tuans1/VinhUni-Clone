@@ -4,33 +4,29 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@ToString
-@Getter
-@Setter
-@Entity
-
+@Entity(name="student")
+@Data
 public class Student {
 
 	@Id
+	@Column(name="id")
 	private String id;
 	@Column(name = "name")
 	private String name;
-	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "student_course", 
 	joinColumns = @JoinColumn(name = "student_id"), 
 	inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private Collection<Course> courses;	
+
 
 }

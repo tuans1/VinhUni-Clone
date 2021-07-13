@@ -1,4 +1,4 @@
-export const FETCH_GAME = "FETCH_GAME";
+export const FETCH_COURSE_DETAIL = "FETCH_COURSE_DETAIL";
 export const FETCH_GAME_SUCCESS = "FETCH_GAME_SUCCESS";
 
 export const FETCH_CREATE_GAME = "FETCH_CREATE_GAME";
@@ -12,7 +12,7 @@ const initialState = {
     game: []
 };
 
-const gameReducer = (state = initialState, action) => {
+const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_GAME_SUCCESS:
             return { ...state, game: action.payload }
@@ -20,11 +20,11 @@ const gameReducer = (state = initialState, action) => {
             return { ...state }
     }
 }
-export default gameReducer;
+export default courseReducer;
 
 
-export const onFetchGame = () => ({
-    type: FETCH_GAME,
+export const onFetchCourseDetail = payload => ({
+    type: FETCH_COURSE_DETAIL,
 })
 
 export const onFetchGameSuccess = payload => ({

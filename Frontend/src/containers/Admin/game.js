@@ -1,12 +1,12 @@
 import { React, useState, useEffect } from 'react';
 import AdminGame from '../../components/Admin/game.js';
-import * as action from '../../reducers/gameReducer';
+import * as action from '../../reducers/courseReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import NAV from './nav';
 export default function AdminGamePage(props) {
     const dispatch = useDispatch();
-    const { game } = useSelector(state => state.gameReducer);
+    const { game } = useSelector(state => state.courseReducer);
     const onSubmit = (game) => {
         dispatch(action.onFetchCreateGame(game));
     }
