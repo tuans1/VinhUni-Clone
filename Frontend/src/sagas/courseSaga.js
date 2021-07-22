@@ -36,7 +36,7 @@
 // }
 
 
-// export default function* gameSaga() {
-//     yield takeLatest(constants.FETCH_COURSE_DETAIL, fetchCourseDetailSaga);
+export default function* gameSaga() {
+    // yield takeLatest(constants.FETCH_COURSE_DETAIL, fetchCourseDetailSaga);
     
-// }
+}

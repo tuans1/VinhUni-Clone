@@ -10,29 +10,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-@Entity
+@Entity(name = "student_course")
 @Data
-public class File {
-
+public class StudentCourse {
 	@Id
 	private String id;
-	
-	@Column(name="name")
-	private String name;
-	
-	@Column(name="type")
-	private String type;
-	
-	@Column(name="content")
-	private String content;
-	
-	@Column(name="lecturer_id")
-	private String lecturerId;
-	
+
+	@Column(name = "student_id")
+	private String studentId;
+
 	@JsonIgnore
-	@ManyToOne 
-    @JoinColumn(name = "course_id") 
+	@ManyToOne
+	@JoinColumn(name = "student_id", insertable = false, updatable = false)
+	private Student student;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "course_id", insertable = false, updatable = false)
 	private Course course;
-	
 
 }

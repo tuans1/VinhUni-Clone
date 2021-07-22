@@ -26,27 +26,28 @@ public class StudentController {
 	private StudentRepository studentRepo;
 
 	@GetMapping("")
-	public StudentDTO getStudentCourse() {
-		Optional<Student> student = studentRepo.findById("231e");
-		List<CourseDTO> courseDTOList = new ArrayList<>();
-		for (Course course : student.get().getCourses()) {
-			CourseDTO courseDTO = new CourseDTO();
-			courseDTO.setId(course.getId());
-			courseDTO.setName(course.getName());
-			List<LecturerDTO> lecturerList = new ArrayList<>();
-			for (Lecturer lecturer : course.getLecturer()) {
-				LecturerDTO lecturerDTO = new LecturerDTO();
-				lecturerDTO.setId(lecturer.getId());
-				lecturerDTO.setName(lecturer.getName());
-				lecturerList.add(lecturerDTO);
-			}
-			courseDTO.setLecturerDTO(lecturerList);
-			courseDTO.setFileDTO(course.getFiles());
-			courseDTOList.add(courseDTO);
-		}
-		StudentDTO studentDTO = new StudentDTO();
-		studentDTO.setCoursesDto(courseDTOList);
-		return studentDTO;
+	public List<Student> getStudentCourse() {
+		List<Student> student = studentRepo.findAll();
+		return student;
+//		List<CourseDTO> courseDTOList = new ArrayList<>();
+//		for (Course course : student.get().getCourses()) {
+//			CourseDTO courseDTO = new CourseDTO();
+//			courseDTO.setId(course.getId());
+//			courseDTO.setName(course.getName());
+//			List<LecturerDTO> lecturerList = new ArrayList<>();
+//			for (Lecturer lecturer : course.getLecturer()) {
+//				LecturerDTO lecturerDTO = new LecturerDTO();
+//				lecturerDTO.setId(lecturer.getId());
+//				lecturerDTO.setName(lecturer.getName());
+//				lecturerList.add(lecturerDTO);
+//			}
+//			courseDTO.setLecturerDTO(lecturerList);
+//			courseDTO.setFileDTO(course.getFiles());
+//			courseDTOList.add(courseDTO);
+//		}
+//		StudentDTO studentDTO = new StudentDTO();
+//		studentDTO.setCoursesDto(courseDTOList);
+//		return studentDTO;
 	}
 	
 //	@GetMapping("/student-course-detail")

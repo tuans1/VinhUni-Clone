@@ -7,7 +7,9 @@ import com.intern.student.entity.Course;
 
 public interface CourseRepository extends JpaRepository<Course, String>{
 
-	Course findByName(String name);
+	@Query(value="select * from course c left join file f on c.id = f.course_id "
+			+ "where f.type = 1 and c.id = 1",nativeQuery = true)
+	Course findByCourseFile();
 	
 	
 }
