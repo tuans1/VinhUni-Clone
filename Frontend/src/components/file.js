@@ -76,40 +76,6 @@ export default function Attendance() {
                             </thead>
                             <tbody>
 
-                                {student.map((x, y) => {
-                                    return (<tr key={y + 1}>
-                                        <td>{y + 1}</td>
-                                        <td >{x.student.name}</td>
-                                        <td>
-                                            <div className="form-check">
-                                                <label className="check-label">
-                                                    Có 
-                                                    <input className="check-radio" type="radio" checked={x.student.b === 1 ? true : false} name={x.student.name} onChange={() => onAttendance({ id: x.id, val: 1, studentId: x.student.id })} />
-                                                    <span class="check-mark"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div className="form-check">
-                                                <label className="check-label check-label-danger">
-                                                    Vắng
-                                                    <input className="check-radio-danger" type="radio" checked={x.student.b === 0 ? true : false} name={x.student.name} onChange={() => onAttendance({ id: x.id, val: 0, studentId: x.student.id })} />
-                                                    <span class="check-mark-danger"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div className="form-check">
-                                                <label className="check-label check-label-warn">
-                                                    Muộn
-                                                    <input className="check-radio-warn" type="radio" checked={x.student.b === -1 ? true : false} name={x.student.name} onChange={() => onAttendance({ id: x.id, val: - 1, studentId: x.student.id })} />
-                                                    <span class="check-mark-warn"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    )
-                                })}
 
                             </tbody>
                         </table>
