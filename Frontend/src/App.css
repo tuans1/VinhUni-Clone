@@ -4,6 +4,9 @@ body, .wrapper {
     background: #333;
     min-height: 100vh;
 }
+.wrap{
+    min-height: 100vh;
+}
 
 .contact {
     position: fixed;

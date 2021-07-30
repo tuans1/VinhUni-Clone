@@ -24,17 +24,22 @@ public class Classes {
 
 	@Column(name = "class_name")
 	private String className;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "course_id", insertable = false, updatable = false)
 	private Course course;
 
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "classes")
 	private Collection<ClassDetail> classDetail;
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "lecturer_id", insertable = false, updatable = false)
 	private Lecturer lecturer;
+	
+	
+	@OneToMany(mappedBy = "classes")
+	private Collection<Homework> homeWork;
 }

@@ -26,7 +26,7 @@ export default function CourseFile(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {props.course[0] && props.lecturer[0] !== undefined && props.course[0].fileDTO.map((x,i) => {
+                                {props.course[0] && props.lecturer && props.course[0].files.map((x,i) => {
                                     if (x.id === props.lecturer[0].id && props.choose === 1) {
                                         return (
                                             <tr key={x.id}>

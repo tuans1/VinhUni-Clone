@@ -1,21 +1,22 @@
 package com.intern.student.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intern.student.dto.ClassDetailDTO;
 import com.intern.student.dto.CourseDTO;
-import com.intern.student.dto.StudentDTO;
 import com.intern.student.dto.LecturerDTO;
-import com.intern.student.entity.Course;
-import com.intern.student.entity.Student;
+import com.intern.student.dto.StudentDTO;
+import com.intern.student.entity.ClassDetail;
 import com.intern.student.entity.Lecturer;
+import com.intern.student.entity.Student;
+import com.intern.student.repository.ClassDetailRepository;
 import com.intern.student.repository.StudentRepository;
 
 @RestController
@@ -25,50 +26,34 @@ public class StudentController {
 	@Autowired
 	private StudentRepository studentRepo;
 
-	@GetMapping("")
-	public List<Student> getStudentCourse() {
-		List<Student> student = studentRepo.findAll();
-		return student;
-//		List<CourseDTO> courseDTOList = new ArrayList<>();
-//		for (Course course : student.get().getCourses()) {
-//			CourseDTO courseDTO = new CourseDTO();
-//			courseDTO.setId(course.getId());
-//			courseDTO.setName(course.getName());
-//			List<LecturerDTO> lecturerList = new ArrayList<>();
-//			for (Lecturer lecturer : course.getLecturer()) {
-//				LecturerDTO lecturerDTO = new LecturerDTO();
-//				lecturerDTO.setId(lecturer.getId());
-//				lecturerDTO.setName(lecturer.getName());
-//				lecturerList.add(lecturerDTO);
-//			}
-//			courseDTO.setLecturerDTO(lecturerList);
-//			courseDTO.setFileDTO(course.getFiles());
-//			courseDTOList.add(courseDTO);
-//		}
-//		StudentDTO studentDTO = new StudentDTO();
-//		studentDTO.setCoursesDto(courseDTOList);
-//		return studentDTO;
-	}
+	@Autowired
+	private ClassDetailRepository classDetailRepo;
+
 	
-//	@GetMapping("/student-course-detail")
-//	public StudentDTO getStudentCourseDetail() {
-//		Optional<Student> student = studentRepo.findById("231e");
-//		List<CourseDTO> courseList = new ArrayList<>();
-//		for (Course course : student.get().getCourses()) {
-//			CourseDTO courseDTO = new CourseDTO();
-//			courseDTO.setName(course.getName());
-//			List<LecturerDTO> lecturerList = new ArrayList<>();
-//			for (Lecturer lecturer : course.getLecturer()) {
-//				LecturerDTO lecturerDTO = new LecturerDTO();
-//				lecturerDTO.setName(lecturer.getName());
-//				lecturerList.add(lecturerDTO);
-//			}
-//			courseDTO.setLecturerDTO(lecturerList);
-//			courseDTO.setFileDTO(course.getFiles());
-//			courseList.add(courseDTO);
-//		}
-//		StudentDTO studentDTO = new StudentDTO();
-//		studentDTO.setCoursesDto(courseList);
-//		return studentDTO;
-//	}
+
+	@GetMapping("/{id}")
+	public StudentDTO getStudentCourseDetail(@PathVariable String id) {
+		Student std = studentRepo.findById("231e").get();
+		StudentDTO student = new StudentDTO();
+		List<ClassDetailDTO> classList = new ArrayList<>();
+		for (ClassDetail classDetail : std.getClassDetail()) {
+			ClassDetailDTO cd = new ClassDetailDTO();
+			CourseDTO c = new CourseDTO();
+			c.setId(classDetail.getClasses().getCourse().getId());
+			c.setName(classDetail.getClasses().getCourse().getName());
+			c.setFiles(classDetail.getClasses().getCourse().getFile());
+			List<LecturerDTO> lecturer = new ArrayList<>();
+			for (Lecturer l : classDetail.getClasses().getCourse().getLecturers()) {
+				LecturerDTO lDTO = new LecturerDTO();
+				lDTO.setId(l.getId());
+				lDTO.setName(l.getName());
+				lecturer.add(lDTO);
+			}
+			c.setLecturers(lecturer);
+			cd.setCourse(c);
+			classList.add(cd);
+		}
+		student.setCourses(classList);
+		return student;
+	}
 }

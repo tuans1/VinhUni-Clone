@@ -1,0 +1,228 @@
+.sidebar {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* The button used to open the sidebar */
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  
+  #main {
+    transition: margin-left .5s;
+    /* If you want a transition effect */
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  
+  @media screen and (max-height: 450px) {
+    .sidebar {
+      padding-top: 15px;
+    }
+    .sidebar a {
+      font-size: 18px;
+    }
+  }
+  
+  /* RADIO INPUT */
+  
+  .check-label {
+    width: 100px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 19;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  
+  .check-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  
+  .check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  .check-mark-danger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  .check-mark-warn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  
+  .check-label:hover input~.check-mark {
+    background-color: #ccc;
+  }
+  
+  .check-label:hover input~.check-mark-danger {
+    background-color: #ccc;
+  }
+  
+  .check-label:hover input~.check-mark-warn {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  
+  .check-label input:checked~.check-mark {
+    background-color: #0954f7;
+  }
+  
+  .check-label-danger input:checked~.check-mark-danger {
+    background-color: #ee2112;
+  }
+  
+  .check-label-warn input:checked~.check-mark-warn {
+    background-color: #ee9612;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  
+  .check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .check-mark-danger:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .check-mark-warn:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  
+  .check-label input:checked~.check-mark:after {
+    display: block;
+  }
+  
+  .check-label-danger input:checked~.check-mark-danger:after {
+    display: block;
+  }
+  
+  .check-label-warn input:checked~.check-mark-warn:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  
+  .check-label .check-mark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+  
+  .check-label-danger .check-mark-danger:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+  
+  .check-label-warn .check-mark-warn:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }

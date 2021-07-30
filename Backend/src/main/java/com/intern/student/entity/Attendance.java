@@ -1,8 +1,10 @@
 package com.intern.student.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +29,8 @@ public class Attendance {
 	private Byte b5;
 
 	@JsonIgnore
-	@OneToOne(mappedBy = "attendance")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "class_detail_id", referencedColumnName = "id")
 	private ClassDetail classDetail;
 
 }

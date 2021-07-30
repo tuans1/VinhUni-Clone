@@ -11,7 +11,9 @@ import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Courseware from './components/Courseware';
-import Attendance from './components/lecturer';
+
+import Classes from './components/classes';
+import Attendance from './components/Attendance/index';
 
 function App() {
   const { accountLoading } = useSelector(state => state.accountReducer)
@@ -24,10 +26,11 @@ function App() {
   return (
     <div>
       <ToastContainer />
-      <div className="wrap" style={{backgroundColor:'#ecf0f1 '}}>
-        {/* <div className="container"> */}
-          <Attendance />
-        {/* </div> */}
+      <div className="wrap" style={{ backgroundColor: '#ecf0f1 ' }}>
+        {/* <Attendance /> */}
+        {/* <div className="container">
+          <Courseware />
+        </div> */}
       </div>
       {/* <MessengerCustomerChat
               pageId="110458054565244"

@@ -11,9 +11,9 @@ export default function CourseInfo(props) {
                     <div className="panel-heading" >
                         <span className="heading-text">Học phần: </span>
                         <select onChange={e => props.onChangeCourse(e.target.value)} style={{ width: '400px' }}>
-                            {props.courseList.map(x => {
+                            {props.courseList && props.courseList.map(x => {
                                 return (
-                                    <option key={x.id} value={x.id}>{x.name}</option>
+                                    <option key={x.course.id} value={x.course.id}>{x.course.name}</option>
                                 )
                             })}
                         </select>
@@ -22,7 +22,7 @@ export default function CourseInfo(props) {
                         <select onChange={e => props.onChangeLecturer(e.target.value)} style={{ width: '226px' }}>
                             <option value="0">-- TẤT CẢ --</option>
 
-                            {props.course[0] && props.course[0].lecturerDTO.map((x, i) => {
+                            {props.course[0] && props.course[0].lecturers.map((x, i) => {
                                 return (<option key={x.id} value={x.id}>{x.name}</option>)
                             })}
 

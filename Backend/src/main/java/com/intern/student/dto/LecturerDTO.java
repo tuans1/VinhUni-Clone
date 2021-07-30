@@ -12,7 +12,7 @@ public class LecturerDTO {
 	
 	private String name;
 	
-	private Collection<Classes> classes;
+	private Collection<ClassesDTO> classes;
 	
 	
 }

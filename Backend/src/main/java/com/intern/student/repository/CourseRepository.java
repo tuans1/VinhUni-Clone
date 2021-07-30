@@ -2,9 +2,11 @@ package com.intern.student.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.intern.student.entity.Course;
 
+@Repository
 public interface CourseRepository extends JpaRepository<Course, String>{
 
 	@Query(value="select * from course c left join file f on c.id = f.course_id "

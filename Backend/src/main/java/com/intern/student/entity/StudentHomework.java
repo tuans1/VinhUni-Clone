@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-@Entity(name = "student_course")
+@Entity(name = "student_homework")
 @Data
-public class StudentCourse {
+public class StudentHomework {
 	@Id
 	private String id;
 
@@ -26,7 +26,7 @@ public class StudentCourse {
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "course_id", insertable = false, updatable = false)
-	private Course course;
+	@JoinColumn(name = "homework_id", insertable = false, updatable = false)
+	private Homework homework;
 
 }

@@ -12,28 +12,30 @@ export default function Courseware() {
     const dispatch = useDispatch();
     useEffect(async () => {
         const result = await axios(
-            'http://localhost:6969/student',
+            'http://localhost:6969/student/1',
         );
-        setCourseList(result.data.coursesDto);
-        setCourse([result.data.coursesDto[0]])
-        setLecturer(result.data.coursesDto[0].lecturerDTO)
+        setCourseList(result.data.courses);
+        setCourse([result.data.courses[0].course])   
+        setLecturer(result.data.courses[0].course.lecturers)
     }, [])
 
     const onChangeCourse = async (courseId) => {
+        console.log(courseId);
         const result = await axios(
             'http://localhost:6969/course/'+courseId,
         );
-        
+        setChoose(0)
         setCourse([result.data])
+        setLecturer(result.data.lecturers)
     }
 
     const onChangeLecturer = (lecturerId) => {
         if (lecturerId === "0") {
-            setLecturer(course[0].lecturerDTO)
+            setLecturer(course[0].lecturers)
             setChoose(0)
             return;
         }
-        course[0].lecturerDTO.map(x => {
+        course[0].lecturers.map(x => {
             if (x.id === lecturerId) {
                 setLecturer([x]);
                 setChoose(1)

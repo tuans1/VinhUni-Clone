@@ -2,35 +2,32 @@ package com.intern.student.entity;
 
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-
-@Entity(name="student")
 @Data
-public class Student {
+@Entity
+public class Homework {
 
 	@Id
 	private String id;
 	
+	@Column
 	private String name;
 	
-	private String dob;
+	@JsonIgnore
+	@ManyToOne
+    @JoinColumn(name="class_id", nullable=false)
+    private Classes classes;
 	
-
-	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-	private Collection<ClassDetail> classDetail;
-	
-	
-//	@OneToOne(mappedBy = "student")
-//	private File fle;
-
+	@OneToMany(mappedBy = "homework")
+	private Collection<StudentHomework> studentHomework;
 }

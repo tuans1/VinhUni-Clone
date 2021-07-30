@@ -29,21 +29,20 @@ public class CourseController {
 
 //	Lấy Khóa học kèm File dựa theo Tên Khóa học
 	@GetMapping("/{id}")
-	public List<Course> getCourse(@PathVariable String id) {
-		return courseRepo.findAll();
-//		return course.get();
-//		CourseDTO courseDTO = new CourseDTO();
-//		List<LecturerDTO> lecturerDTOList = new ArrayList<>();
-//		for (Lecturer lecturer : course.get().getLecturer()) {
-//			LecturerDTO lecturerDTO = new LecturerDTO();
-//			lecturerDTO.setId(lecturer.getId());
-//			lecturerDTO.setName(lecturer.getName());
-//			lecturerDTOList.add(lecturerDTO);
-//		}
-//		courseDTO.setName(course.get().getName());
-//		courseDTO.setLecturerDTO(lecturerDTOList);
-//		courseDTO.setFileDTO(course.get().getFiles());
-//		return courseDTO;
+	public CourseDTO getCourse(@PathVariable String id) {
+		Course c = courseRepo.findById(id).get();
+		CourseDTO course = new CourseDTO();
+		List<LecturerDTO> lecturerDTOList = new ArrayList<>();
+		for (Lecturer lecturer : c.getLecturers()) {
+			LecturerDTO lecturerDTO = new LecturerDTO();
+			lecturerDTO.setId(lecturer.getId());
+			lecturerDTO.setName(lecturer.getName());
+			lecturerDTOList.add(lecturerDTO);
+		}
+		course.setName(course.getName());
+		course.setLecturers(lecturerDTOList);
+		course.setFiles(c.getFile());
+		return course;
 		
 	}
 

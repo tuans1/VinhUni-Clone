@@ -29,14 +29,14 @@ public class Lecturer {
 	
 	
 	
-//	@JsonIgnore
-//	@ManyToMany
-//	@JoinTable(name = "lecturer_course", 
-//	joinColumns = @JoinColumn(name = "lecturer_id"), 
-//	inverseJoinColumns = @JoinColumn(name = "course_id"))
-//	private Collection<Course> courses;	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "lecturer_course", 
+	joinColumns = @JoinColumn(name = "lecturer_id"), 
+	inverseJoinColumns = @JoinColumn(name = "course_id"))
+	private Collection<Course> courses;	
 
-
+	
 	@OneToMany(mappedBy = "lecturer", cascade = CascadeType.ALL)
 	private Collection<Classes> classes;
 	
