@@ -10,12 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intern.student.dto.ClassDetailDTO;
+import com.intern.student.dto.ClassesDTO;
 import com.intern.student.dto.CourseDTO;
+import com.intern.student.dto.HomeworkDTO;
 import com.intern.student.dto.LecturerDTO;
 import com.intern.student.dto.StudentDTO;
+import com.intern.student.dto.StudentHomeworkDTO;
 import com.intern.student.entity.ClassDetail;
+import com.intern.student.entity.Classes;
+import com.intern.student.entity.Homework;
 import com.intern.student.entity.Lecturer;
 import com.intern.student.entity.Student;
+import com.intern.student.entity.StudentHomework;
 import com.intern.student.repository.ClassDetailRepository;
 import com.intern.student.repository.StudentRepository;
 
@@ -56,4 +62,39 @@ public class StudentController {
 		student.setCourses(classList);
 		return student;
 	}
+	
+	@GetMapping("classes/{id}")
+	public StudentDTO getStudentClasses(@PathVariable String id) {
+		Student std = studentRepo.findById("231e").get();
+		StudentDTO student = new StudentDTO();
+		List<ClassDetailDTO> classList = new ArrayList<>();
+		for (ClassDetail cd : std.getClassDetail()) {
+			ClassDetailDTO cdDTO = new ClassDetailDTO();
+			ClassesDTO clDTO= new ClassesDTO();
+			clDTO.setId(cd.getClasses().getId());
+			clDTO.setClassName(cd.getClasses().getClassName());
+			cdDTO.setClasses(clDTO);
+			classList.add(cdDTO);
+		}
+		student.setCourses(classList);
+		return student;
+	}
+	
+	
 }
+//
+//List<HomeworkDTO> hwList = new ArrayList<>();
+//for (Homework hw : cd.getClasses().getHomeWork()) {
+//	HomeworkDTO homeWork = new HomeworkDTO();
+//	homeWork.setId(hw.getId());
+//	homeWork.setName(hw.getName());
+//	homeWork.setDeadLine(hw.getDeadLine());
+//	homeWork.setRequired(hw.getRequired());
+//	StudentHomeworkDTO shDTO = new StudentHomeworkDTO();
+//	for (StudentHomework sh  : hw.getStudentHomework()) {
+//		shDTO.setId(sh.getId());
+//		shDTO.setPath(sh.getPath());
+//	}
+//	homeWork.setStudent(shDTO);
+//	hwList.add(homeWork);
+//}

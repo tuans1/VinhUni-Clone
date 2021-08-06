@@ -79,3 +79,8 @@
       font-size: 18px;
     }
   }
+
+  /* NAV ACTIVE */
+  .nav-active{
+      color: white !important;
+  }

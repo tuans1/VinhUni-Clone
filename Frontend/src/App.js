@@ -10,14 +10,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-import Courseware from './components/Courseware';
+import StudentCourseware from './components/componentStudent/Courseware';
 
-import Classes from './components/classes';
-import Attendance from './components/Attendance/index';
-
+import LecturerCourseware from './components/componentLecturer/Courseware';
+import HomeWorkStudent from './components/componentStudent/Homework';
+import LecturerHomework from './components/componentLecturer/Homework';
+import LecturerAttendance from './components/componentLecturer/Attendance/index';
+import Header from './common/Header';
 function App() {
-  const { accountLoading } = useSelector(state => state.accountReducer)
-  const { isLogin, adminLoading } = useSelector(state => state.adminReducer)
+
   const [loading, setLoading] = useState(false)
   const isInitialMount = useRef(true);
   const [role, setRole] = useState("");
@@ -27,10 +28,16 @@ function App() {
     <div>
       <ToastContainer />
       <div className="wrap" style={{ backgroundColor: '#ecf0f1 ' }}>
-        {/* <Attendance /> */}
-        {/* <div className="container">
-          <Courseware />
-        </div> */}
+        <Switch>
+          <Route path="/lecturer/attendance" component={LecturerAttendance} />
+          <Route path="/lecturer/courseware" component={LecturerCourseware} />
+          <Route path="/lecturer/homework" component={LecturerHomework} />
+        </Switch>
+        <Header />
+        <div className="container">
+          <Route path="/student/courseware" component={StudentCourseware} />
+          <Route path="/student/homework" component={HomeWorkStudent} />
+        </div>
       </div>
       {/* <MessengerCustomerChat
               pageId="110458054565244"

@@ -1,8 +1,12 @@
+*{
+    text-decoration: none !important;
+}
 body, .wrapper {
     position: relative;
     height: 100%;
     background: #333;
     min-height: 100vh;
+    
 }
 .wrap{
     min-height: 100vh;

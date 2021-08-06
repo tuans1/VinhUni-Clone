@@ -6,8 +6,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity(name="class_detail")
@@ -15,6 +13,7 @@ import lombok.Data;
 public class ClassDetail {
 	@Id
 	private String id;
+
 
 	@ManyToOne
 	@JoinColumn(name = "student_id", insertable=false, updatable=false)
@@ -24,6 +23,7 @@ public class ClassDetail {
 	@ManyToOne
 	@JoinColumn(name = "class_id", insertable = false, updatable = false)
 	private Classes classes;
+	
 	
 	@OneToOne(mappedBy = "classDetail")
 	private Attendance attendance;

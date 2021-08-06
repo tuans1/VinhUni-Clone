@@ -1,6 +1,6 @@
 
 import { call, put, takeLatest } from 'redux-saga/effects';
-import * as constants from '../reducers/classDetailReducer';
+import * as constants from '../reducers/lecturerReducer';
 import Api from '../request';
 import { Success, Error, Warn } from '../common/toastify';
 
@@ -42,19 +42,28 @@ function* fetchAttendanceStudent({ payload }) {
 }
 
 
-// function* fetchDeleteClassDetailSaga({ payload }) {
-//     try {
-//         yield call(Api, '/price/delete', 'delete', JSON.stringify({ id: payload }));
-//         yield call(Success, { message: "Xóa Giờ thuê thành công !" })
-//         yield fetchClassDetailSaga();
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
+function* fetchHomeworkSaga({ payload }) {
+    try {
+        const data = yield call(Api, `/classes/homework/?classesId=` + localStorage.getItem("classesId"), 'get')
+        if (data) {
+            yield put({ type: constants.FETCH_HOMEWORK_SUCCESS, data })
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}
+function* fetchHomeworkDeleteSaga({ payload }) {
+    try {
+        const status = yield call(Api, `/homework/` + payload, 'delete');
+        yield fetchHomeworkSaga({payload : localStorage.getItem("classesId")})
+    } catch (err) {
+        console.log(err)
+    }
+}
 
-
-export default function* classDetailSaga() {
+export default function* lecturerSaga() {
     yield takeLatest(constants.FETCH_CLASS_DETAIL, fetchClassDetailSaga);
     yield takeLatest(constants.FETCH_ATTENDANCE_STUDENT, fetchAttendanceStudent);
-    // yield takeLatest(constants.FETCH_DELETE_PRICE, fetchDeleteClassDetailSaga);
+    yield takeLatest(constants.FETCH_HOMEWORK, fetchHomeworkSaga);
+    yield takeLatest(constants.FETCH_HOMEWORK_DELETE, fetchHomeworkDeleteSaga);
 }

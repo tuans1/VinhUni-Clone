@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.intern.student.dto.ClassDetailDTO;
 import com.intern.student.dto.ClassesDTO;
 import com.intern.student.dto.StudentDTO;
+import com.intern.student.dto.StudentHomeworkDTO;
 import com.intern.student.entity.ClassDetail;
 import com.intern.student.entity.Classes;
+import com.intern.student.projection.StudentHomeworkProjection;
 import com.intern.student.repository.ClassesRepository;
 
 @RestController
@@ -31,7 +33,7 @@ public class ClassesController {
 		classesDTO.setId(classes.getId());
 		classesDTO.setClassName(classes.getClassName());
 		List<ClassDetailDTO> classDetail = new ArrayList<>();
-		for (ClassDetail cd  : classes.getClassDetail()) {
+		for (ClassDetail cd : classes.getClassDetail()) {
 			ClassDetailDTO cdDTO = new ClassDetailDTO();
 			StudentDTO s = new StudentDTO();
 			cdDTO.setId(cd.getId());
@@ -42,7 +44,7 @@ public class ClassesController {
 			cdDTO.setAttendance(cd.getAttendance());
 			classDetail.add(cdDTO);
 		}
-		
+
 		classesDTO.setClassDetail(classDetail);
 		classesDTO.setLesson(lesson);
 		return classesDTO;
@@ -53,6 +55,26 @@ public class ClassesController {
 		Classes classes = classesClassRepo.findById(classesId).get();
 		ClassesDTO classesDTO = new ClassesDTO();
 		classesDTO.setHomework(classes.getHomeWork());
+		
 		return classesDTO;
+	}
+
+	@GetMapping("/student-homework")
+	public List<StudentHomeworkDTO> getStudentHomework(@RequestParam String classesId, String studentId) {
+		List<StudentHomeworkProjection> list = classesClassRepo.findStudentHomeworkById(classesId, studentId);
+		List<StudentHomeworkDTO> homeWorkList = new ArrayList<>();
+		for (StudentHomeworkProjection std : list) {
+			StudentHomeworkDTO homeWork = new StudentHomeworkDTO();
+			homeWork.setId(std.getId());
+			homeWork.setDeadLine(std.getDeadLine());
+			homeWork.setHomework(std.getHomework());
+			homeWork.setRequired(std.getRequired());
+			homeWork.setPath(std.getPath());
+			homeWork.setName(std.getName());
+			homeWork.setDeadLine(std.getDeadLine());
+			homeWork.setCreateDate(std.getCreateDate());
+			homeWorkList.add(homeWork);
+		}
+		return homeWorkList;
 	}
 }

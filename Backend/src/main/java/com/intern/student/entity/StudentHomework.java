@@ -24,9 +24,15 @@ public class StudentHomework {
 	@JoinColumn(name = "student_id", insertable = false, updatable = false)
 	private Student student;
 
-	@JsonIgnore
+	@Column(name = "homework_id")
+	private String homeworkId;
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "homework_id", insertable = false, updatable = false)
 	private Homework homework;
 
+	private String path;
+	
+	private String createDate;
 }

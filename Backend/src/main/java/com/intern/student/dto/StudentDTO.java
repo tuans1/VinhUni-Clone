@@ -14,7 +14,7 @@ public class StudentDTO {
 	private String dob;
 	
 //
-//	private Collection<CourseDTO> coursesDto;
+	private ClassesDTO classes;
 
 	private List<ClassDetailDTO> courses;
 	

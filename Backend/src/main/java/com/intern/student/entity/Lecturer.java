@@ -28,8 +28,6 @@ public class Lecturer {
 	private String name;
 	
 	
-	
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "lecturer_course", 
 	joinColumns = @JoinColumn(name = "lecturer_id"), 

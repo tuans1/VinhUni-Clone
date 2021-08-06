@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import accountReducer from '../reducers/accountReducer';
-import courseReducer from '../reducers/courseReducer';
+import studentReducer from '../reducers/studentReducer';
 import adminReducer from '../reducers/adminReducer';
-import rentHistoryReducer from './rentHistoryReducer';
-import classDetailReducer from './classDetailReducer';
+import fileReducer from './fileReducer';
+import lecturerReducer from './lecturerReducer';
 import transactionHistoryReducer from './transactionHistoryReducer';
 
 const rootReducer = combineReducers({
-    accountReducer, courseReducer, adminReducer, rentHistoryReducer, classDetailReducer, transactionHistoryReducer
+    accountReducer, studentReducer, adminReducer, fileReducer, lecturerReducer, transactionHistoryReducer
 })
 
 export default rootReducer;

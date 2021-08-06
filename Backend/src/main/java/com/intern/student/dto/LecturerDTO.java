@@ -2,8 +2,6 @@ package com.intern.student.dto;
 
 import java.util.Collection;
 
-import com.intern.student.entity.Classes;
-
 import lombok.Data;
 
 @Data
@@ -14,5 +12,5 @@ public class LecturerDTO {
 	
 	private Collection<ClassesDTO> classes;
 	
-	
+	private Collection<CourseDTO> course;
 }

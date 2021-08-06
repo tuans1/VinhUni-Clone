@@ -1,12 +1,10 @@
 package com.intern.student.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,23 +16,27 @@ public class File {
 
 	@Id
 	private String id;
-	
-	@Column(name="name")
-	private String name;
-	
-	@Column(name="type")
+
+	@Column(name = "type")
 	private String type;
-	
-	@Column(name="content")
+
+	@Column(name = "content")
 	private String content;
 
-	@Column(name="lecturer_id")
+	@Column(name = "lecturer_id")
 	private String lecturerId;
-	
-	@JsonIgnore
-	@ManyToOne 
-    @JoinColumn(name = "course_id") 
-	private Course course;
-	
 
+	@Column(name = "course_id")
+	private String courseId;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "course_id", insertable = false, updatable = false)
+	private Course course;
+
+	private String createDate;
+
+	private String path;
+	
+	private int count;
 }

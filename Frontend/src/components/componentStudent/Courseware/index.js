@@ -4,7 +4,7 @@ import CourseFile from './course_file/index';
 import './style.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-export default function Courseware() {
+export default function StudentCourseware() {
     const [courseList, setCourseList] = useState([]);
     const [course, setCourse] = useState([])
     const [lecturer, setLecturer] = useState("")
@@ -15,14 +15,14 @@ export default function Courseware() {
             'http://localhost:6969/student/1',
         );
         setCourseList(result.data.courses);
-        setCourse([result.data.courses[0].course])   
+        setCourse([result.data.courses[0].course])
         setLecturer(result.data.courses[0].course.lecturers)
     }, [])
 
     const onChangeCourse = async (courseId) => {
         console.log(courseId);
         const result = await axios(
-            'http://localhost:6969/course/'+courseId,
+            'http://localhost:6969/course/' + courseId,
         );
         setChoose(0)
         setCourse([result.data])

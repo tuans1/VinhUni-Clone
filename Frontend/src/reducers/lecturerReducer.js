@@ -3,13 +3,16 @@ export const FETCH_CLASS_DETAIL_SUCCESS = "FETCH_CLASS_DETAIL_SUCCESS";
 
 export const FETCH_ATTENDANCE_STUDENT = "FETCH_ATTENDANCE_STUDENT";
 export const FETCH_ATTENDANCE_STUDENT_SUCCESS = "FETCH_ATTENDANCE_STUDENT_SUCCESS";
-export const FETCH_DELETE_PRICE = "FETCH_DELETE_PRICE";
 
+export const FETCH_HOMEWORK = "FETCH_HOMEWORK";
+export const FETCH_HOMEWORK_SUCCESS = "FETCH_HOMEWORK_SUCCESS";
+export const FETCH_HOMEWORK_DELETE = "FETCH_HOMEWORK_DELETE";
 const initialState = {
-    student: []
+    student: [],
+    homework:[]
 };
 
-const classDetailReducer = (state = initialState, action) => {
+const lecturerReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_CLASS_DETAIL_SUCCESS:
             return { ...state, student: action.data.classDetail }
@@ -20,11 +23,13 @@ const classDetailReducer = (state = initialState, action) => {
                 }
             })
             return { ...state }
+        case FETCH_HOMEWORK_SUCCESS :
+            return {...state,homework : action.data.homework}
         default:
             return { ...state }
     }
 }
-export default classDetailReducer;
+export default lecturerReducer;
 
 
 export const onFetchClassDetail = payload => ({
@@ -39,5 +44,18 @@ export const onFetchClassDetailSuccess = payload => ({
 
 export const onFetchAttendanceStudent = payload => ({
     type: FETCH_ATTENDANCE_STUDENT,
+    payload
+})
+
+export const onFetchHomework = payload => ({
+    type: FETCH_HOMEWORK,
+    payload
+})
+export const onFetchHomeworkSuccess = payload => ({
+    type: FETCH_HOMEWORK_SUCCESS,
+    payload
+})
+export const onFetchHomeworkDelete = payload => ({
+    type: FETCH_HOMEWORK_DELETE,
     payload
 })

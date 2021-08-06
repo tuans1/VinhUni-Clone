@@ -53,7 +53,7 @@ export default function CourseFile(props) {
                                                 })}
                                                 <td >15:45 12/03/2021</td>
                                                 <td >123</td>
-                                                <td>.</td>
+                                                <td><a target="_blank"  href={`http://localhost:6969/file/download/${x.path}`}>TẢI </a></td>
                                             </tr>
                                         )
                                     }
